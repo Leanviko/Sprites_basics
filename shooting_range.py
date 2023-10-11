@@ -15,13 +15,16 @@ pygame.init()
 clock = pygame.time.Clock()
 
 #Game Screen
-screen_width = 1920
-screen_height = 1080
+screen_width = 800
+screen_height = 400
 screen = pygame.display.set_mode((screen_width,screen_height))
+background = pygame.image.load("BG.png")
+pygame.mouse.set_visible(False)
 
-crosshair = Crosshair(50,50,100,100,(255,255,255))
+
 
 #Create a group 
+crosshair = Crosshair(50,50,100,100,(255,255,255))
 crosshair_group = pygame.sprite.Group()
 crosshair_group.add(crosshair)
 
@@ -33,5 +36,6 @@ while True:
             sys.exit()
 
     pygame.display.flip()
+    screen.blit(background,(0,0))
     crosshair_group.draw(screen)
     clock.tick(60)
